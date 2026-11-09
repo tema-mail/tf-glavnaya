@@ -1,0 +1,69 @@
+{
+  "_": "Прототип: demo – без контрольной группы; consent:false – окна cookie в прототипе нет; endpoint demo: – заявки никуда не уходят.",
+  "demo": true,
+  "consent": false,
+  "endpoint": "demo:",
+  "tz": 7,
+  "agreement": "https://targetfactory.ru/policy",
+  "widgets": [
+    {
+      "id": "svyaz",
+      "enabled": true,
+      "type": "contacts",
+      "title": "Связь: боковая панель / нижняя панель на телефоне",
+      "group": "contact",
+      "trigger": { "on": "load" },
+      "content": {
+        "layout": "side",
+        "phone": "+79132090181",
+        "phoneText": "+7 (913) 209-01-81",
+        "tg": "https://t.me/korotaev_denis",
+        "max": "https://max.ru/u/f9LHodD0cOLcKLkeG8Hr_oFXFF0snzqnNOGgHN2cX0meUwSiovnBh1wb8xM",
+        "email": "korotaev.TF@yandex.ru",
+        "callback": "zvonok",
+        "buttons": [
+          { "text": "Бесплатный разбор рекламы", "open": "razbor", "kind": "main" },
+          { "text": "Написать в ВК", "href": "https://vk.me/target_factory_vk", "kind": "alt" }
+        ]
+      }
+    },
+    {
+      "id": "razbor",
+      "enabled": true,
+      "type": "tab",
+      "title": "Ярлычок: разбор рекламы за 2 вопроса",
+      "group": "lead",
+      "trigger": { "on": "time", "s": 25 },
+      "content": {
+        "label": "Разбор вашей рекламы бесплатно",
+        "short": "Бесплатный разбор",
+        "quiz": [
+          { "q": "Реклама в ВК сейчас идёт?", "options": [ { "t": "Да, но заявок мало" }, { "t": "Да, хочу проверить таргетолога" }, { "t": "Нет, запускаем впервые" } ] },
+          { "q": "Ваша ниша?", "options": [ { "t": "Услуги" }, { "t": "Товары, магазин" }, { "t": "Цветы" }, { "t": "Другое" } ] }
+        ]
+      },
+      "form": { "fields": ["name", "phone"], "button": "Записаться на разбор" }
+    },
+    {
+      "id": "uhod",
+      "enabled": true,
+      "type": "modal",
+      "title": "Окно на уходе (только компьютер)",
+      "trigger": { "on": "exit" },
+      "target": { "device": "desktop" },
+      "content": {
+        "title": "Не торопитесь уходить – разберём вашу рекламу бесплатно",
+        "text": "Посмотрим кабинет: аудитории, объявления, ставки. Покажем, какие связки тянут бюджет без заявок, и дадим план, что исправить первым."
+      },
+      "form": { "fields": ["phone"], "button": "Забрать разбор" }
+    },
+    {
+      "id": "zvonok",
+      "enabled": true,
+      "type": "callback",
+      "trigger": { "on": "click" },
+      "content": { "title": "Перезвоним и договоримся о разборе" },
+      "form": { "fields": ["name", "phone"], "button": "Перезвоните мне" }
+    }
+  ]
+}

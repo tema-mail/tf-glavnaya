@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Прототип – Target Factory, отзывы</title>
+<style>/*KIT*/</style>
+<style>
+.tf-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.tf-chips button { border: 1px solid var(--ink); background: #fff; border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 14px; cursor: pointer; }
+.tf-chips button.on { background: var(--ink); color: #fff; }
+.tf-ba { display: grid; gap: 10px; }
+.tf-ba .row { display: grid; grid-template-columns: 70px 1fr; gap: 8px; font-size: 15px; }
+.tf-ba .row b { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; padding-top: 2px; }
+.tf-ba blockquote { margin: 0; border-left: 3px solid var(--ink); padding-left: 10px; font-style: italic; }
+.tf-story { display: grid; grid-template-columns: .8fr 1.2fr; gap: 24px; border: 1px solid var(--line); padding: 18px; }
+.tf-nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.tf-nums div { border: 1px solid var(--line); padding: 10px; font-size: 13px; display: grid; }
+.tf-nums b { font-size: 20px; }
+.tf-videos { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.tf-videos .w-media { aspect-ratio: 9 / 16; min-height: 0; font-size: 13px; }
+.tf-chat { border: 1px solid var(--line); background: var(--fill2); padding: 12px; display: grid; gap: 8px; font-size: 14px; align-content: start; }
+.tf-chat .in, .tf-chat .out { max-width: 88%; padding: 8px 10px; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
+.tf-chat .out { justify-self: end; background: var(--fill); }
+.tf-chat .cap { font-size: 12px; color: var(--muted); }
+.tf-rating { display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: baseline; }
+.tf-rating b { font-size: 40px; line-height: 1; }
+@media (max-width: 760px) {
+  .tf-story { grid-template-columns: 1fr; }
+  .tf-videos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tf-nums b { font-size: 17px; }
+}
+</style>
+<link rel="stylesheet" href="https://tema-mail.github.io/vidzhety/vidzhety.css">
+<style>
+:root { --w-accent: #141414; --w-accent-2: #5f5f5f; --w-radius: 6px; --w-wa: #3d3d3d; --w-tg: #3d3d3d; --w-max: #3d3d3d; }
+body.vz-has-sticky .w-sticky { display: none !important; }
+</style>
+</head>
+<body>
+<div class="w-bar"><div class="w-wrap">
+  <b>Прототип · Target Factory · /otzyvy/ · 09.11.2026</b>
+  <label><input type="checkbox" id="t-logic"> Логика блоков</label>
+  <label><input type="checkbox" id="t-notes"> Комментарии дизайнеру</label>
+  <label><input type="checkbox" id="t-seo"> SEO страницы</label>
+  <label><input type="checkbox" id="t-success"> После отправки</label>
+  <a href="../" style="color:#fff">← Главная</a>
+  <span>Меток «запросить»: <b id="ask-count">0</b></span>
+</div></div>
+
+<script type="application/json" id="w-seo">{"title": "Отзывы о Target Factory – видео-отзывы клиентов о рекламе ВК", "description": "Видео-отзывы и переписки клиентов Target Factory: что было до рекламы ВКонтакте и что стало. 4,9 по 36 отзывам в группе ВК.", "h1": "Отзывы клиентов: что было до нас и что стало", "zapros": "target factory отзывы / таргетолог вк отзывы", "schema": "Organization, VideoObject у видео-отзывов; Review и AggregateRating не ставить – оценки живут в ВК", "links": ["/ – главная", "/#zayavka – разбор", "/flowers/ – из отзывов цветочных"]}</script>
+<div class="w-seo" id="w-seo-box"></div>
+
+<header class="w-header w-block" data-n="0" data-name="Шапка" data-question="Кто это и как с ними связаться прямо сейчас?" data-proof="как на главной">
+  <div class="w-wrap">
+    <span class="w-logo">TARGET FACTORY</span>
+    <span class="w-descr">Реклама ВКонтакте для бизнеса по всей России. Партнёр VK</span>
+    <span class="w-contacts-top"><a href="tel:+79132090181">+7 (913) 209-01-81</a><span class="w-muted">Без выходных · ВК · Telegram · MAX</span></span>
+    <a class="w-btn ghost" href="#zayavka">Бесплатный разбор рекламы</a>
+  </div>
+  <nav class="w-wrap w-nav"><a href="../#keysy">Кейсы</a><a href="./">Отзывы</a><a href="../#kak">Как работаем</a><a href="../#ceny">Цены</a><a href="../#voprosy">Вопросы</a></nav>
+</header>
+
+<main>
+  <section class="w-block" data-n="1" data-name="Первый экран отзывов" data-question="Им правда доверяют – и есть ли кто-то из моей ниши?" data-proof="рейтинг 4,9 / 36 отзывов в группе ВК на 09.11.2026, фильтр по нишам" data-next="Что конкретно изменилось у клиентов?">
+    <div class="w-wrap w-stack">
+      <h1>Отзывы клиентов: что было до нас и что стало</h1>
+      <div class="tf-rating"><b>4,9</b><span>по 36 отзывам в группе ВКонтакте · на 09.11.2026 · <a href="https://vk.com/target_factory_vk">открыть в ВК</a></span></div>
+      <p>Видео-отзывы, переписки и цифры. Выберите свою нишу – покажем тех, кто похож на вас.</p>
+      <div class="w-actions"><a class="w-btn" href="#zayavka">Хочу так же – записаться на разбор</a><a class="w-btn ghost" href="https://vk.me/target_factory_vk">Написать в ВК</a></div>
+      <div class="tf-chips"><button class="on">Все</button><button>Цветы</button><button>Бьюти</button><button>Мебель</button><button>Одежда</button><button>Авто</button><button>Другое</button></div>
+      <p class="w-note">Фильтр работает по всем блокам ниже сразу. Если человек пришёл с главной из карточки кейса – фильтр уже стоит на его нише.</p>
+    </div>
+  </section>
+
+  <section class="w-block" data-n="2" data-name="Истории до / после" data-question="Что конкретно изменилось у клиентов?" data-proof="расшифровки 3 видео-отзывов (28.10.2026) + цифры от Дениса" data-next="А это живые люди, а не постановка?">
+    <div class="w-wrap w-stack">
+      <h2>Три истории подробно</h2>
+      <article class="tf-story">
+        <div class="w-media" data-alt="Видео-отзыв Антона Зайцева, цветочный магазин, Нижний Новгород">Видео-отзыв 1:05 · Антон в магазине</div>
+        <div class="tf-ba">
+          <b>Антон Зайцев · цветочный магазин · Нижний Новгород · с нами 7–8 месяцев</b>
+          <div class="row"><b>До</b><span>Реклама на 2–4 креативах, которые крутились месяцами. Результат нестабильный: то хорошо, то не очень.</span></div>
+          <div class="row"><b>Что сделали</b><span>Аудит кабинета, рекомендации по группе. Креативы и тексты делаем сами из постов, которые зашли, с помощью ИИ.</span></div>
+          <div class="row"><b>После</b><span>Продолжаем работать. Владелец не тратит время на креативы: дал УТП и иногда присылает видео.</span></div>
+          <div class="tf-nums"><div><b><span class="w-ask">[N]</span></b>заявок в месяц</div><div><b><span class="w-ask">[N ₽]</span></b>цена заявки до</div><div><b><span class="w-ask">[N ₽]</span></b>цена заявки после</div></div>
+          <blockquote>«Не бойтесь, обращайтесь. Всё будет здорово у вас»</blockquote>
+        </div>
+      </article>
+      <article class="tf-story">
+        <div class="w-media" data-alt="Видео-отзыв Алексея, цветочный магазин, Тюмень">Видео-отзыв 0:53 · Алексей</div>
+        <div class="tf-ba">
+          <b>Алексей · цветочный магазин · Тюмень · с октября 2025</b>
+          <div class="row"><b>До</b><span><span class="w-ask">[запросить у Дениса: что было с ВК до старта]</span></span></div>
+          <div class="row"><b>Что сделали</b><span>Ведём рекламу ВКонтакте, отчёт каждую неделю и за месяц.</span></div>
+          <div class="row"><b>После</b><span>Подписчики растут из месяца в месяц, из ВК идут продажи.</span></div>
+          <div class="tf-nums"><div><b><span class="w-ask">[N]</span></b>подписчиков</div><div><b><span class="w-ask">[N]</span></b>заявок</div><div><b><span class="w-ask">[N ₽]</span></b>выручка из ВК</div></div>
+          <blockquote>«Постоянно человек на связи, какие-то вопросы решаем сразу»</blockquote>
+        </div>
+      </article>
+      <article class="tf-story">
+        <div class="w-media" data-alt="Видео-отзыв Руслана, сеть салонов Boombox, Пенза">Видео-отзыв · Руслан</div>
+        <div class="tf-ba">
+          <b>Руслан · сеть салонов Boombox · Пенза</b>
+          <div class="row"><b>До</b><span>Был другой таргетолог, работой был недоволен. Нашёл Дениса по его видео.</span></div>
+          <div class="row"><b>Что сделали</b><span>Взяли на ведение одну группу из сети <span class="w-ask">[запросить: что именно сделали]</span></span></div>
+          <div class="row"><b>После</b><span><span class="w-ask">[запросить: результат в цифрах, отдали ли другие группы]</span></span></div>
+          <blockquote>«Денис проявился с положительной стороны как профессионал своего дела»</blockquote>
+        </div>
+      </article>
+      <p class="w-note">История = видео слева + текст справа: до → что сделали → после → 3 цифры → цитата. Цифры без подтверждения не ставить: если Денис не даст – ряд цифр в карточке не показывать. Цитаты дословно из видео.</p>
+    </div>
+  </section>
+
+  <section class="w-block w-cta-strip" data-n="2а" data-name="Плашка призыва" data-question="Мне уже хватает – что сделать сейчас?" data-proof="по историям выше">
+    <div class="w-wrap"><div class="w-cta"><p>Покажем кабинеты клиентов из вашей ниши на бесплатном разборе</p><a class="w-btn" href="#zayavka">Записаться на разбор</a></div></div>
+  </section>
+
+  <section class="w-block" data-n="3" data-name="Переписки" data-question="А это живые люди, а не постановка?" data-proof="скрины реальных переписок с клиентами" data-next="Сколько их всего и что говорят остальные?">
+    <div class="w-wrap w-stack">
+      <h2>Переписки с клиентами – как есть</h2>
+      <div class="w-grid" style="--cols:3;--cols-m:1">
+        <div class="tf-chat" data-alt="Скрин переписки: клиент благодарит за заявки к празднику"><span class="cap">Скрин: клиент пишет про заказы к празднику</span><div class="in">Вчера 23 заказа, такого 8 марта у нас ещё не было 🔥</div><div class="out">Отлично! Сегодня поднимаем бюджет на вечер</div></div>
+        <div class="tf-chat" data-alt="Скрин переписки: совет по обработке заявок"><span class="cap">Скрин: совет, как обработать заявки</span><div class="out">Заявки после 21:00 висят до утра – давайте чат-бот с ценами</div><div class="in">Поставили, уже 3 человека дописали сами</div></div>
+        <div class="tf-chat" data-alt="Скрин переписки: недельный отчёт"><span class="cap">Скрин: недельный отчёт</span><div class="out">За неделю 41 заявка по 302 ₽, лучшее объявление – видео из мастерской</div><div class="in">Из них 14 продаж 👍</div></div>
+      </div>
+      <p class="w-hint"><span class="w-ask">[запросить: 6–9 реальных скринов; тексты в прототипе условные]</span></p>
+      <p class="w-note">Скрины – настоящие, в рамке телефона, имена и аватарки клиентов размыты. По клику – скрин крупно в попапе. Подпись под каждым: ниша и город.</p>
+    </div>
+  </section>
+
+  <section class="w-block" data-n="4" data-name="Все видео-отзывы" data-question="Сколько их всего и что говорят остальные?" data-proof="9 видео из закреплённого поста группы (7 марта 2025)" data-next="Хочу так же – что сделать?">
+    <div class="w-wrap w-stack">
+      <h2>Все видео-отзывы</h2>
+      <div class="tf-videos">
+        <div class="w-media">Видео-отзыв 0:49 · обложка: клиент в своём бизнесе, подпись ниши и города</div><div class="w-media">Видео-отзыв 1:00 · обложка: клиент в своём бизнесе, подпись ниши и города</div><div class="w-media">Видео-отзыв 1:16 · обложка: клиент в своём бизнесе, подпись ниши и города</div><div class="w-media">Видео-отзыв 0:55 · обложка: клиент в своём бизнесе, подпись ниши и города</div><div class="w-media">Видео-отзыв 0:49 · обложка: клиент в своём бизнесе, подпись ниши и города</div><div class="w-media">Видео-отзыв 0:29 · обложка: клиент в своём бизнесе, подпись ниши и города</div><div class="w-media">Видео-отзыв 0:33 · обложка: клиент в своём бизнесе, подпись ниши и города</div><div class="w-media">Видео-отзыв 1:48 · обложка: клиент в своём бизнесе, подпись ниши и города</div><div class="w-media">Видео-отзыв 0:43 · обложка: клиент в своём бизнесе, подпись ниши и города</div><div class="w-media">Плитка-ссылка: ещё отзывы текстом в обсуждении группы ВК</div>
+      </div>
+      <p class="w-hint">Видео – из закреплённого поста группы. <span class="w-ask">[запросить: имена и ниши на 9 видео, разрешение на показ на сайте]</span></p>
+      <p class="w-note">Сетка 5 в ряд на компьютере, 2 на телефоне. Обложка – кадр с человеком + подпись ниши. Плеер грузится только по клику. Последняя плитка ведёт в обсуждение отзывов в группе ВК.</p>
+    </div>
+  </section>
+
+  <section class="w-block" id="zayavka" data-n="5" data-name="Заявка" data-question="Хочу так же – что сделать?" data-proof="бесплатный разбор, как на главной">
+    <div class="w-wrap">
+      <form class="w-form" onsubmit="event.preventDefault()">
+        <h2>Хотите так же в своей нише?</h2>
+        <p>Разберём вашу рекламу за 30 минут и покажем кабинеты похожих клиентов.</p>
+        <label class="w-field">Имя<input autocomplete="name"></label>
+        <label class="w-field">Телефон<input inputmode="tel" placeholder="+7 (___) ___-__-__"></label>
+        <label class="w-field">Ниша и город<input></label>
+        <label class="w-check"><input type="checkbox" data-agree> <span>Согласен на обработку <a href="#">персональных данных</a></span></label>
+        <button class="w-btn" type="submit" disabled>Записаться на разбор</button>
+        <p class="w-hint">Напишем в ВК или Telegram и предложим время</p>
+        <div class="w-success">
+          <p><b>Заявка у нас.</b></p>
+          <p>Напишем и предложим время созвона <span class="w-ask">[запросить: срок ответа]</span></p>
+          <p>Срочно – <a href="tel:+79132090181">позвонить</a> или <a href="https://vk.me/target_factory_vk">написать в ВК</a></p>
+          <p>К разговору: ссылка на группу и сколько сейчас тратите на рекламу</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="w-footer"><div class="w-wrap w-stack">
+  <span>Как на главной: контакты, разделы, другие направления (цветы, сайты, Яндекс), документы.</span>
+</div></footer>
+
+<div class="w-sticky"><a class="w-btn" href="#zayavka">Бесплатный разбор</a><a class="w-btn ghost" href="https://vk.me/target_factory_vk">Написать в ВК</a></div>
+
+<script>
+document.querySelectorAll('.w-block').forEach(function (b) {
+  var d = b.dataset, el = document.createElement('div');
+  el.className = 'w-logic';
+  el.innerHTML = '<b>Блок ' + (d.n || '?') + ' · ' + (d.name || '') + '</b><br>Вопрос клиента: ' + (d.question || '–') + '<br>Опора: ' + (d.proof || '–') + (d.next ? '<br>Дальше спросит: ' + d.next : '');
+  if (b.tagName === 'HEADER') b.prepend(el); else (b.querySelector('.w-wrap') || b).prepend(el);
+});
+['logic', 'notes', 'seo', 'success'].forEach(function (k) {
+  document.getElementById('t-' + k).addEventListener('change', function (e) { document.body.classList.toggle('show-' + k, e.target.checked); });
+});
+(function () {
+  var src = document.getElementById('w-seo'), box = document.getElementById('w-seo-box');
+  var d = JSON.parse(src.textContent), esc = function (t) { return String(t).replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); };
+  var len = function (t, max) { return ' <span class="' + (t.length > max ? 'bad' : '') + '">(' + t.length + ' / ' + max + ')</span>'; };
+  var heads = [].map.call(document.querySelectorAll('main h1, main h2'), function (h) { return '<li>' + h.tagName + ' – ' + esc(h.textContent.trim()) + '</li>'; }).join('');
+  box.innerHTML = '<table><tr><td>title</td><td>' + esc(d.title) + len(d.title, 65) + '</td></tr><tr><td>description</td><td>' + esc(d.description) + len(d.description, 160) +
+    '</td></tr><tr><td>запрос</td><td>' + esc(d.zapros) + '</td></tr><tr><td>заголовки</td><td><ul>' + heads + '</ul></td></tr><tr><td>разметка</td><td>' + esc(d.schema) + '</td></tr></table>';
+})();
+document.getElementById('ask-count').textContent = document.querySelectorAll('.w-ask').length;
+document.querySelectorAll('form').forEach(function (f) {
+  var a = f.querySelector('[data-agree]'), btn = f.querySelector('button[type="submit"]');
+  if (a && btn) a.addEventListener('change', function () { btn.disabled = !a.checked; });
+});
+document.querySelectorAll('.tf-chips button').forEach(function (b) {
+  b.addEventListener('click', function () { document.querySelectorAll('.tf-chips button').forEach(function (x) { x.classList.toggle('on', x === b); }); });
+});
+</script>
+<div data-vidzhety data-src="../vidzhety-glavnaya.json"></div>
+<script src="https://tema-mail.github.io/vidzhety/vidzhety.js"></script>
+</body>
+</html>

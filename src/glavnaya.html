@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Прототип – Target Factory, главная под рекламу</title>
+<style>/*KIT*/</style>
+<style>
+/* Доп. элементы этого прототипа – только серые, дизайн делает дизайнер */
+.tf-trust { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; color: var(--muted); }
+.tf-trust b { color: var(--ink); }
+.tf-feed { border: 1px solid var(--line); background: var(--fill2); padding: 12px; display: grid; gap: 8px; min-height: 300px; align-content: start; }
+.tf-feed .msg { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font-size: 14px; display: grid; gap: 2px; }
+.tf-feed .msg small { color: var(--muted); font-size: 12px; }
+.tf-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.tf-chips button { border: 1px solid var(--ink); background: #fff; border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 14px; cursor: pointer; }
+.tf-chips button.on { background: var(--ink); color: #fff; }
+.tf-case .num { font-size: 26px; font-weight: 800; line-height: 1.1; }
+.tf-case .meta { font-size: 13px; color: var(--muted); }
+.tf-case ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 15px; }
+.tf-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); }
+.tf-vs > div { padding: 12px 14px; border-top: 1px solid var(--line); }
+.tf-vs > div:nth-child(-n+2) { border-top: 0; font-weight: 700; background: var(--fill2); }
+.tf-vs > div:nth-child(odd) { border-right: 1px solid var(--line); color: var(--muted); }
+.tf-chat { border: 1px solid var(--line); background: var(--fill2); padding: 12px; display: grid; gap: 8px; font-size: 14px; }
+.tf-chat .in, .tf-chat .out { max-width: 85%; padding: 8px 10px; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
+.tf-chat .out { justify-self: end; background: var(--fill); }
+.tf-chat .cap { font-size: 12px; color: var(--muted); }
+.tf-ba { display: grid; gap: 10px; }
+.tf-ba .row { display: grid; grid-template-columns: 70px 1fr; gap: 8px; font-size: 15px; }
+.tf-ba .row b { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; padding-top: 2px; }
+.tf-ba blockquote { margin: 0; border-left: 3px solid var(--ink); padding-left: 10px; font-style: italic; }
+.tf-reels { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(170px, 1fr); gap: 12px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x mandatory; }
+.tf-reels .w-media { aspect-ratio: 9 / 16; min-height: 0; scroll-snap-align: start; font-size: 13px; }
+.tf-reel-cap { font-size: 14px; font-weight: 600; margin-top: 6px; }
+.tf-time { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); }
+.tf-time > div { padding: 14px; border-right: 1px solid var(--line); display: grid; gap: 4px; }
+.tf-time > div:last-child { border-right: 0; }
+.tf-time b { font-size: 20px; }
+.tf-quiz { border: 2px solid var(--ink); padding: 18px; display: grid; gap: 12px; max-width: 760px; }
+.tf-quiz .opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.tf-quiz .opts label { border: 1px solid var(--line); padding: 10px; font-size: 14px; display: flex; gap: 8px; align-items: center; cursor: pointer; }
+.tf-quiz .bar { height: 6px; background: var(--fill); }
+.tf-quiz .bar i { display: block; height: 100%; width: 20%; background: var(--ink); }
+.tf-fork .w-card { border-width: 2px; }
+.tf-founder { display: grid; grid-template-columns: .8fr 1.2fr; gap: 28px; align-items: start; }
+.tf-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.tf-stats div { border: 1px solid var(--line); padding: 12px; display: grid; gap: 2px; font-size: 14px; }
+.tf-stats b { font-size: 22px; }
+.tf-logos { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.tf-logos span { border: 1px dashed var(--line); min-height: 52px; display: grid; place-items: center; font-size: 12px; color: var(--muted); text-align: center; }
+.tf-msgr { display: flex; flex-wrap: wrap; gap: 10px; }
+.tf-foot { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.tf-foot a { display: block; margin-top: 4px; }
+@media (max-width: 760px) {
+  .tf-vs { font-size: 14px; }
+  .tf-time { grid-template-columns: 1fr 1fr; }
+  .tf-time > div:nth-child(2) { border-right: 0; }
+  .tf-time > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .tf-quiz .opts { grid-template-columns: 1fr 1fr; }
+  .tf-founder { grid-template-columns: 1fr; }
+  .tf-stats { grid-template-columns: 1fr 1fr 1fr; }
+  .tf-stats b { font-size: 18px; }
+  .tf-logos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tf-foot { grid-template-columns: 1fr 1fr; }
+  .tf-feed { min-height: 0; }
+  .w-hero > .w-stack { display: flex; flex-direction: column; gap: 12px; }
+  .w-hero > .w-stack > ul { order: 5; } .w-hero > .w-stack > .tf-trust { order: 4; }
+  .w-hero > .w-stack > p:nth-of-type(2) { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .tf-scroll-m { grid-auto-flow: column; grid-template-columns: none !important; grid-auto-columns: 82%; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .tf-scroll-m > * { scroll-snap-align: start; }
+  .tf-feed .msg:nth-child(n+4) { display: none; }
+}
+</style>
+<link rel="stylesheet" href="https://tema-mail.github.io/vidzhety/vidzhety.css">
+<style>
+:root { --w-accent: #141414; --w-accent-2: #5f5f5f; --w-radius: 6px; --w-wa: #3d3d3d; --w-tg: #3d3d3d; --w-max: #3d3d3d; }
+body.vz-has-sticky .w-sticky { display: none !important; }
+</style>
+</head>
+<body>
+<div class="w-bar"><div class="w-wrap">
+  <b>Прототип · Target Factory · главная под рекламу · 09.11.2026</b>
+  <label><input type="checkbox" id="t-logic"> Логика блоков</label>
+  <label><input type="checkbox" id="t-notes"> Комментарии дизайнеру</label>
+  <label><input type="checkbox" id="t-seo"> SEO страницы</label>
+  <label><input type="checkbox" id="t-success"> После отправки</label>
+  <a href="otzyvy/" style="color:#fff">→ Страница отзывов</a>
+  <span>Меток «запросить»: <b id="ask-count">0</b></span>
+</div></div>
+
+<script type="application/json" id="w-seo">{"title": "Таргет ВКонтакте под ключ для бизнеса | Target Factory", "description": "Настраиваем и ведём рекламу ВКонтакте: стратегия, креативы, группа, чат-бот. Кабинет на вас, отчёт по заявкам каждую неделю. Бесплатный разбор рекламы.", "h1": "Стабильно привлекаем клиентов через ВК, даже если раньше реклама не работала или «сливался» бюджет", "zapros": "таргет вк / реклама вконтакте для бизнеса / таргетолог вк (главная под Директ, совпадение с объявлением – через подстановку ниши)", "schema": "Organization, Service (Реклама ВКонтакте), FAQPage – только видимые вопросы, AggregateRating не ставить (рейтинг с ВК, не с сайта)", "links": ["/otzyvy/ – все отзывы, видео и переписки", "/flowers/ – маркетинг для цветочных магазинов", "deford-studio.ru – сайты и интернет-магазины", "/#ceny – пакеты", "/policy, /agreement, /details – юридические"]}</script>
+<div class="w-seo" id="w-seo-box"></div>
+
+<header class="w-header w-block" data-n="0" data-name="Шапка" data-question="Кто это и как с ними связаться прямо сейчас?" data-proof="телефон, ВК, Telegram, MAX, время ответа из ВК">
+  <div class="w-wrap">
+    <span class="w-logo">TARGET FACTORY</span>
+    <span class="w-descr">Реклама ВКонтакте для бизнеса по всей России. Партнёр VK</span>
+    <span class="w-contacts-top"><a href="tel:+79132090181">+7 (913) 209-01-81</a><span class="w-muted">Без выходных · <a href="https://vk.me/target_factory_vk">ВК</a> · <a href="https://t.me/korotaev_denis">Telegram</a> · <a href="#">MAX</a></span></span>
+    <a class="w-btn ghost" href="#zayavka">Бесплатный разбор рекламы</a>
+  </div>
+  <nav class="w-wrap w-nav"><a href="#keysy">Кейсы</a><a href="otzyvy/">Отзывы</a><a href="#kak">Как работаем</a><a href="#ceny">Цены</a><a href="#voprosy">Вопросы</a><a href="#eshche">Другие услуги</a></nav>
+</header>
+
+<main>
+  <section class="w-block" data-n="1" data-name="Первый экран" data-question="Куда я попал и решат ли тут мою задачу?" data-proof="оффер старого сайта (его владелец оставляет), рейтинг 4,9 в ВК, живая лента заявок" data-next="А в моей нише это работает и почём заявка?">
+    <div class="w-wrap">
+      <div class="w-hero">
+        <div class="w-stack">
+          <p class="w-muted"><b>Таргет ВКонтакте под ключ</b> · с окупаемостью х3–х15 <span class="w-ask">[запросить: на скольких проектах из ведущихся такая окупаемость – иначе убрать]</span></p>
+          <h1>Стабильно привлекаем клиентов через ВК, даже если раньше реклама не работала или «сливался» бюджет</h1>
+          <p>Настраиваем и ведём рекламу ВКонтакте под ваш бизнес: стратегия, креативы, оформление группы и чат-бот. Считаем заявки и продажи, а не лайки и клики.</p>
+          <ul>
+            <li><b>Первые заявки в первые дни</b> – в быстрых нишах с первых часов после запуска</li>
+            <li><b>Кабинет на вас</b> – видите каждый рубль и каждое объявление</li>
+            <li><b>Отчёт каждую неделю</b> – цена заявки, продажи, окупаемость простым языком</li>
+            <li><b>Договор</b> – выйти можно в любой момент, предупредив за 7 дней</li>
+          </ul>
+          <div class="w-actions"><a class="w-btn" href="#zayavka">Получить разбор моей рекламы</a><a class="w-btn ghost" href="#raschet">Рассчитать бюджет</a></div>
+          <p class="w-hint">Разбор бесплатный, 30 минут по видео: откроем рабочие кабинеты в вашей нише и посчитаем стартовый бюджет</p>
+          <div class="tf-trust"><span><b>4,9</b> в ВК по 36 отзывам</span><span><b>1 минута</b> – время ответа в ВК</span><span><b>200+</b> проектов <span class="w-ask">[запросить: 200+ или 500+ – на сайте оба]</span></span></div>
+        </div>
+        <div class="tf-feed" data-alt="Лента входящих заявок из ВКонтакте у клиентов Target Factory">
+          <div class="msg"><small>Сообщения ВК · сейчас</small>Здравствуйте! Сколько стоит кухня 3 метра?</div>
+          <div class="msg"><small>Заявка с формы · 2 мин</small>Запишите на LPG на субботу</div>
+          <div class="msg"><small>Сообщения ВК · 5 мин</small>Есть этот букет к 18:00?</div>
+          <div class="msg"><small>Чат-бот · 9 мин</small>Хочу примерить куртку из поста</div>
+          <div class="msg"><small>Сообщения ВК · 12 мин</small>Пришлите цены, пожалуйста</div>
+        </div>
+      </div>
+      <p class="w-note">Справа – виджет «живая лента заявок» (на перерисовке он уже есть и работает – оставить): сообщения появляются по одному. Тексты – из ниш наших кейсов (кухни, LPG, цветы, одежда), не «хочу заказать таргет»: человек должен видеть заявки СВОИХ будущих клиентов. Для рекламы: H1 подставляет нишу по метке объявления – «Стабильно привлекаем клиентов [в салон красоты] через ВК…», без метки – как сейчас. Рейтинг 4,9 – текстом со ссылкой на отзывы группы, без значка ВК. На 390 px первый экран: дескриптор, H1, одна строка подзаголовка, кнопка, рейтинг; лента – 3 сообщения под кнопкой.</p>
+    </div>
+  </section>
+
+  <section class="w-block" id="keysy" data-n="2" data-name="Кейсы по нишам" data-question="А в моей нише это работает и почём заявка?" data-proof="цифры из постов группы ВК «Наши результаты» и кейсов по цветам; скрин кабинета у каждого" data-next="Почему у меня раньше не получилось?">
+    <div class="w-wrap w-stack">
+      <h2>Заявки по 135–380 ₽ и продажи с первых недель – в разных нишах</h2>
+      <div class="tf-chips" role="tablist"><button class="on">Все</button><button>Мебель и кухни</button><button>Бьюти</button><button>Одежда</button><button>Цветы</button><button>Авто</button><button>Детские центры</button></div>
+      <div class="w-grid tf-scroll-m" style="--cols:3;--cols-m:1">
+        <article class="w-card tf-case"><div class="w-media small" data-alt="Кабинет ВК Рекламы: заявки на кухни на заказ, Саратов">Скрин кабинета: число заявок и цена, город скрыть не нужно, имя клиента – по разрешению</div><span class="meta">Кухни на заказ · Саратов · 3 недели</span><span class="num">72 заявки по 380 ₽</span><ul><li>Продали 2 кухни и шкаф больше чем на 675 000 ₽</li><li>Лучшая неделя – 20 заявок по 216 ₽</li></ul><a href="#">Смотреть разбор →</a></article>
+        <article class="w-card tf-case"><div class="w-media small" data-alt="Кабинет ВК Рекламы: заявки на LPG-массаж, Томск">Скрин кабинета</div><span class="meta">LPG-массаж · Томск · неделя</span><span class="num">40 заявок по 243 ₽</span><ul><li>9 абонементов на 117 000 ₽ за неделю</li></ul><a href="#">Смотреть разбор →</a></article>
+        <article class="w-card tf-case"><div class="w-media small" data-alt="Переписка шоурума одежды с покупателями из ВК, Казань">Скрин переписки с покупателем</div><span class="meta">Шоурум женской одежды · Казань</span><span class="num">319 сообщений по 135 ₽</span><ul><li>830 подписчиков по 32 ₽</li><li>135 продаж за неделю, 2–3 новых покупателя каждый день</li></ul><a href="#">Смотреть разбор →</a></article>
+        <article class="w-card tf-case"><div class="w-media small" data-alt="Кабинет ВК Рекламы: подписчики шоурума мужской одежды, Пермь">Скрин кабинета</div><span class="meta">Шоурум мужской одежды · Пермь · 2 недели</span><span class="num">300 продаж</span><ul><li>712 подписчиков по 51 ₽</li></ul><a href="#">Смотреть разбор →</a></article>
+        <article class="w-card tf-case"><div class="w-media small" data-alt="Кабинет ВК Рекламы: обращения в цветочный магазин">Скрин кабинета</div><span class="meta">Цветочный магазин · <span class="w-ask">[запросить: город и срок]</span></span><span class="num">209 обращений по 251 ₽</span><ul><li>Было: заявка 1 500–2 000 ₽, стало около 400 ₽ <span class="w-ask">[запросить: тот же клиент?]</span></li></ul><a href="#eshche">Маркетинг для цветочных →</a></article>
+        <article class="w-card tf-case"><div class="w-media small">Скрин кабинета</div><span class="meta"><span class="w-ask">[запросить: кейс в авто – детейлинг, импорт из Китая или СТО]</span></span><span class="num">N заявок по N ₽</span><ul><li>Что продали за период</li></ul><a href="#">Смотреть разбор →</a></article>
+      </div>
+      <div class="tf-logos"><span>лого клиента</span><span>лого клиента</span><span>лого клиента</span><span>лого клиента</span><span>лого клиента</span><span>лого клиента</span></div>
+      <p class="w-hint">Цифры – из отчётов клиентам, опубликованных в группе ВК 24.03.2025 <span class="w-ask">[запросить: свежие кейсы 2026 года и разрешение на логотипы]</span></p>
+      <p class="w-note">Фильтр по нишам – ниши из квиза. Под рекламу с нишей в метке фильтр сразу включает эту нишу. Карточка: ниша · город · срок → одна крупная цифра → 1–2 строки результата в деньгах → ссылка на видео-разбор в VK Видео (у Дениса разборы уже есть). Блок «Компании и бренды» со старого сайта стал строкой логотипов под кейсами – отдельным блоком в конце страницы он не работал. На 390 px – карусель карточек, 1,2 карточки в окне.</p>
+    </div>
+  </section>
+
+  <section class="w-block" data-n="3" data-name="Почему раньше сливался бюджет" data-question="Почему у меня раньше не получилось?" data-proof="слова клиентов из видео-отзывов, пост Дениса про окупаемость, скрин переписки с советом по заявкам" data-next="Кто уже так работает и что изменилось?">
+    <div class="w-wrap w-stack">
+      <h2>Почему реклама сливала бюджет – и что мы делаем иначе</h2>
+      <p class="w-muted">Так нам рассказывают клиенты, которые пришли от другого таргетолога.</p>
+      <div class="tf-vs">
+        <div>Как было</div><div>Как работаем мы</div>
+        <div>2–3 креатива крутятся месяцами, результат то есть, то нет</div><div><b>Тестируем десятки связок</b> – аудитория, посыл, креатив – и оставляем то, что приносит заявки</div>
+        <div>Креативы и тексты просят делать вас</div><div><b>Делаем сами</b> из ваших удачных постов и видео, вы пишете только, чем вы лучше конкурентов</div>
+        <div>Отчёт: показы, клики, охват</div><div><b>Отчёт в деньгах</b> – цена заявки, продажи, доля рекламы в выручке</div>
+        <div>Кабинет агентства, доступа нет</div><div><b>Кабинет на вас</b> – вы видите всё и в любой момент можете уйти с ним</div>
+        <div>Заявки пришли – и потерялись у менеджера</div><div><b>Смотрим, как вы отвечаете</b>, даём скрипты и ставим чат-бота, чтобы заявку не упустить</div>
+        <div>Таргетолог пропадает на выходные</div><div><b>На связи без выходных</b> – в ВК отвечаем в среднем за минуту</div>
+      </div>
+      <div class="w-grid" style="--cols:2;--cols-m:1">
+        <div class="tf-chat" data-alt="Переписка Дениса Коротаева с клиентом: совет, как обработать заявку">
+          <span class="cap">Скрин переписки с клиентом – имя и фото клиента скрыть</span>
+          <div class="out">Посмотрел 12 вчерашних заявок: 5 человек ждали ответа больше часа. Давайте поставим автоответ с ценой и ссылкой на каталог – так мы их не теряем.</div>
+          <div class="in">Ок, давайте. А что писать в автоответе?</div>
+          <div class="out">Скинул шаблон, поправьте под себя 👇</div>
+          <span class="w-ask">[запросить: 2–3 реальных скрина таких переписок]</span>
+        </div>
+        <div class="w-stack">
+          <p><b>Честно скажем, если проект не готов.</b> Реклама – не волшебная кнопка: если заявки теряются или оффер непонятен, она просто покажет, где дыры. Поэтому до запуска смотрим группу, оффер и как вы отвечаете клиентам.</p>
+          <a class="w-btn ghost" href="#zayavka">Проверить мою рекламу бесплатно</a>
+        </div>
+      </div>
+      <p class="w-note">Это главный блок для «горячего» человека из рекламы: он уже обжёгся. Левая колонка – серым и мельче, правая – контрастно. Пример переписки в прототипе написан нами – в дизайн идут только реальные скрины. Вместо простыни «8 причин доверить продвижение нам» (на старом сайте), которая повторяла «Почему выбирают нас», – один блок «было / стало».</p>
+    </div>
+  </section>
+
+  <section class="w-block" data-n="4" data-name="Отзывы до / после" data-question="Кто уже так работает и что изменилось?" data-proof="3 видео-отзыва (расшифровки 28.10.2026), 4,9 по 36 отзывам в ВК" data-next="А как они думают – им можно доверять?">
+    <div class="w-wrap w-stack">
+      <h2>С нами работают по году и дольше – вот что изменилось у клиентов</h2>
+      <div class="w-grid tf-scroll-m" style="--cols:3;--cols-m:1">
+        <article class="w-card tf-ba">
+          <div class="w-media small" data-alt="Видео-отзыв Алексея, цветочный магазин, Тюмень">Видео-отзыв 0:53 · обложка: Алексей в своём магазине</div>
+          <b>Алексей · цветочный магазин · Тюмень</b><span class="w-muted">С нами с октября 2025</span>
+          <div class="row"><b>До</b><span>Искал таргетолога, которому важен результат и который отвечает за него <span class="w-ask">[запросить: что было до – канал, заявки]</span></span></div>
+          <div class="row"><b>После</b><span>Подписчики растут каждый месяц, из ВК идут продажи, отчёт за неделю и за месяц</span></div>
+          <blockquote>«Постоянно человек на связи, вопросы решаем сразу»</blockquote>
+        </article>
+        <article class="w-card tf-ba">
+          <div class="w-media small" data-alt="Видео-отзыв Антона Зайцева, цветочный магазин, Нижний Новгород">Видео-отзыв 1:05 · обложка: Антон</div>
+          <b>Антон Зайцев · цветы · Нижний Новгород</b><span class="w-muted">С нами 7–8 месяцев</span>
+          <div class="row"><b>До</b><span>2–4 креатива крутились месяцами, результат то хороший, то нет</span></div>
+          <div class="row"><b>После</b><span>Аудит и план, креативы и тексты делаем сами – от него только УТП и иногда видео</span></div>
+          <blockquote>«Нравится, что от меня не требуют постоянно делать креативы»</blockquote>
+        </article>
+        <article class="w-card tf-ba">
+          <div class="w-media small" data-alt="Видео-отзыв Руслана, сеть салонов Boombox, Пенза">Видео-отзыв · обложка: Руслан</div>
+          <b>Руслан · сеть салонов Boombox · Пенза</b><span class="w-muted"><span class="w-ask">[запросить: с какого месяца работаем]</span></span>
+          <div class="row"><b>До</b><span>Был таргетолог, работой был недоволен</span></div>
+          <div class="row"><b>После</b><span>Отдал одну группу на ведение – <span class="w-ask">[запросить: цифры по заявкам и записи]</span></span></div>
+          <blockquote>«Денис проявился как профессионал своего дела»</blockquote>
+        </article>
+      </div>
+      <div class="w-cta"><p><b>4,9 в ВК по 36 отзывам</b> · видео-отзывы и переписки с клиентами – на отдельной странице</p><a class="w-btn ghost" href="otzyvy/">Смотреть все отзывы</a></div>
+      <p class="w-note">Видео открывается в попапе по нажатию (плеер грузится только по клику – скорость). Цитату ставить дословно из видео. «До» у Алексея и цифры у Руслана – запросить, иначе строку «До» в карточке убрать, а не придумывать. Блок «Прозрачная отчётность + видео, как работаем изнутри» со старого сайта ушёл в блок 7.</p>
+    </div>
+  </section>
+
+  <section class="w-block" data-n="5" data-name="Клипы-разборы" data-question="А как они думают – им можно доверять?" data-proof="клипы и разборы Дениса в VK Клипах и VK Видео" data-next="Кто конкретно будет вести мой проект?">
+    <div class="w-wrap w-stack">
+      <h2>Разбираем рекламу открыто – посмотрите пару клипов, прежде чем писать</h2>
+      <div class="tf-reels">
+        <div><div class="w-media" data-alt="Клип: разбор рекламного кабинета ВК">Клип 9:16 · разбор чужого кабинета: где сливался бюджет</div><p class="tf-reel-cap">Где сливается бюджет</p></div>
+        <div><div class="w-media">Клип 9:16 · слабое и сильное УТП на примерах</div><p class="tf-reel-cap">УТП, которое продаёт</p></div>
+        <div><div class="w-media">Клип 9:16 · когда реклама начинает окупаться</div><p class="tf-reel-cap">Когда реклама окупится</p></div>
+        <div><div class="w-media">Клип 9:16 · отзыв клиента в магазине</div><p class="tf-reel-cap">Отзыв клиента</p></div>
+        <div><div class="w-media">Клип 9:16 · как обработать заявку, чтобы она купила</div><p class="tf-reel-cap">Как не терять заявки</p></div>
+      </div>
+      <div class="w-actions"><a class="w-btn ghost" href="https://vkvideo.ru/video-213005931_456239276">Все разборы в VK Видео</a></div>
+      <p class="w-hint"><span class="w-ask">[запросить: 5–6 клипов с лучшими просмотрами и ссылки на них]</span></p>
+      <p class="w-note">Лента клипов прокручивается вбок (на телефоне 1,5 клипа в окне). Обложка с крупной подписью темы и длительностью. Видео не грузить, пока не нажали: сначала обложка, по клику – плеер VK в попапе. Темы взяты из постов группы (УТП, окупаемость, потеря заявок) – так клип продолжает смысл блоков 3 и 8.</p>
+    </div>
+  </section>
+
+  <section class="w-block" data-n="6" data-name="Основатель" data-question="Кто конкретно будет вести мой проект?" data-proof="Денис: партнёр VK, 6+ лет, личная ответственность; цифры агентства" data-next="Как пойдёт работа после заявки?">
+    <div class="w-wrap">
+      <div class="tf-founder">
+        <div class="w-media" data-alt="Денис Коротаев, основатель Target Factory">Фото Дениса за работой с кабинетом на экране – живое, не студийное</div>
+        <div class="w-stack">
+          <h2>За результат отвечаю лично я – Денис Коротаев</h2>
+          <p>Основатель Target Factory, сертифицированный таргетолог и партнёр ВКонтакте, больше 6 лет в рекламе для малого и среднего бизнеса.</p>
+          <p>«Я не просто запускаю рекламу. Погружаюсь в бизнес: цели, аудиторию, продукт – и строю систему, которая приносит заявки. Над проектом работает команда, но каждый кабинет я открываю сам.»</p>
+          <div class="tf-stats">
+            <div><b>200+</b>проектов <span class="w-ask">[запросить: 200+ или 500+]</span></div>
+            <div><b>70+ млн ₽</b>рекламных бюджетов офлайн-бизнеса в 2024 <span class="w-ask">[запросить: и 500+ млн за 2 года – что верно]</span></div>
+            <div><b>80%</b>клиентов с нами от 6 месяцев <span class="w-ask">[запросить: 80% (пост ВК) или 90% (сайт)]</span></div>
+          </div>
+          <div class="w-actions"><a class="w-btn" href="#zayavka">Обсудить проект с Денисом</a><a class="w-btn ghost" href="https://t.me/korotaev_denis">Написать в Telegram</a></div>
+        </div>
+      </div>
+      <p class="w-note">Блок «Команда, которая увеличивает прибыль…» и цифры со старого сайта собраны сюда. Цифры на сайте сейчас спорят между собой (200+ и 500+ проектов, 90% и 80%) – в дизайн только одно значение от Дениса. Фраза «каждый кабинет я открываю сам» – <b>проверить у Дениса</b>, если не так – убрать.</p>
+    </div>
+  </section>
+
+  <section class="w-block" id="kak" data-n="7" data-name="Как работаем и отчёты" data-question="Как пойдёт работа после заявки?" data-proof="регламент со старого сайта, скрин недельного отчёта" data-next="Сколько нужно вложить и когда окупится?">
+    <div class="w-wrap w-stack">
+      <h2>От разбора до первых заявок – 4 шага</h2>
+      <ol class="w-steps" style="--cols:4">
+        <li><b>Бесплатный разбор, 30 минут</b><span>Смотрим вашу группу и рекламу, показываем рабочие кабинеты в вашей нише, считаем бюджет</span></li>
+        <li><b>Стратегия и упаковка</b><span>Анализ ниши и конкурентов, оффер, оформление группы и чат-бот – в подарок при ведении</span></li>
+        <li><b>Запуск за 1 день</b><span>Креативы и тексты делаем сами, кабинет – на вас. Договор с ИП, ООО и физлицами</span></li>
+        <li><b>Ведение и рост</b><span>Каждый день оптимизируем, раз в неделю отчёт, масштабируем то, что приносит продажи</span></li>
+      </ol>
+      <div class="w-grid" style="--cols:2;--cols-m:1">
+        <div class="tf-chat" data-alt="Недельный отчёт клиенту: заявки, цена заявки, продажи">
+          <span class="cap">Скрин недельного отчёта в чате клиента (как приходит сейчас)</span>
+          <div class="out"><b>Отчёт 03–09.11</b><br>Потрачено: 12 400 ₽<br>Заявок: 41, по 302 ₽<br>Лучшее объявление: «Букет дня»<br>На неделю: отключаем 2 слабых, тестируем видео</div>
+          <div class="in">Супер, по продажам из них 14 👍</div>
+          <span class="w-ask">[запросить: реальный отчёт, цифры в примере условные]</span>
+        </div>
+        <div class="w-stack">
+          <p><b>Отчёт в удобном формате:</b> короткое видео, созвон или таблица с ключевыми цифрами. Без терминов – вы понимаете, куда ушёл бюджет и что он принёс.</p>
+          <div class="w-media small" data-alt="Видео: как Target Factory работает изнутри">Видео 1–2 мин: как выглядит работа изнутри (есть на старом сайте)</div>
+        </div>
+      </div>
+      <p class="w-note">Четыре шага вместо шести карточек «Комплексный маркетинг / Считаем прибыль / Один день…» на старом сайте – те же факты, но по порядку работы. Пример отчёта в прототипе условный – цифры в прототипе написаны нами, в дизайн только реальный скрин.</p>
+    </div>
+  </section>
+
+  <section class="w-block" data-n="8" data-name="Сроки и бюджет честно" data-question="Сколько нужно вложить и когда окупится?" data-proof="ответы из FAQ старого сайта и пост Дениса «Когда реклама начнёт приносить прибыль?» (29.07.2025)" data-next="Сколько стоит ваша работа?">
+    <div class="w-wrap w-stack">
+      <h2>Когда пойдут заявки и когда реклама окупится – честно</h2>
+      <div class="tf-time">
+        <div><span class="w-muted">Первые часы – 3 дня</span><b>Первые заявки</b><span>Быстрые ниши – в первые часы, мебель, авто, потолки – за 1–3 дня</span></div>
+        <div><span class="w-muted">1–2 недели</span><b>Стабильный поток</b><span>Нашли рабочие связки и масштабируем их</span></div>
+        <div><span class="w-muted">Первый месяц</span><b>Фундамент</b><span>Если старт с нуля – в плюс скорее всего не выйдете, и это нормально</span></div>
+        <div><span class="w-muted">2–4 месяца</span><b>Окупаемость</b><span>Узнаваемость, ретаргет и цена клиента выходят на рабочий уровень</span></div>
+      </div>
+      <p><b>Рекламный бюджет – от 30 000 ₽ в месяц</b> (около 1 000 ₽ в день). В городах до 100 тысяч жителей – меньше. Пополнять кабинет можно частями.</p>
+    </div>
+  </section>
+
+  <section class="w-block w-cta-strip" data-n="8а" data-name="Плашка призыва" data-question="Мне уже хватает – что сделать сейчас?" data-proof="расчёт по блоку о бюджете">
+    <div class="w-wrap"><div class="w-cta"><p>Посчитаем бюджет и прогноз заявок под вашу нишу и город</p><a class="w-btn" href="#raschet">Рассчитать бюджет</a></div></div>
+  </section>
+
+  <section class="w-block" id="ceny" data-n="9" data-name="Пакеты" data-question="Сколько стоит ваша работа?" data-proof="3 пакета со старого сайта" data-next="Какой вариант подойдёт именно мне?">
+    <div class="w-wrap w-stack">
+      <h2>Три формата – от консультации до ведения под ключ</h2>
+      <p class="w-muted">Цена – за нашу работу. Рекламный бюджет вы пополняете сами в своём кабинете.</p>
+      <div class="w-grid" style="--cols:3;--cols-m:1">
+        <article class="w-card"><h3>Консультация по рекламе ВК</h3><p class="w-muted">Хотите запускать сами или проверить своего таргетолога</p><ul><li>Аудит кабинета: аудитории, тексты, креативы</li><li>Что поправить в группе и контенте</li><li>Как обрабатывать заявки</li><li>Онлайн-сессия 1,5–2 часа</li></ul><span class="w-price">от 15 000 ₽</span><a class="w-btn ghost" href="#zayavka">Записаться на консультацию</a></article>
+        <article class="w-card" style="border:2px solid var(--ink)"><span class="w-muted"><b>Чаще всего выбирают</b> <span class="w-ask">[запросить: так ли это]</span></span><h3>Таргет под ключ</h3><p class="w-muted">Нужны клиенты уже в первый месяц</p><ul><li>Аудит группы, стратегия, анализ аудитории</li><li>Креативы и тексты – наши</li><li>Запуск и ведение, ежедневная оптимизация</li><li><b>В подарок:</b> оформление группы, чат-бот, советы по продажам</li></ul><span class="w-price">от 30 000 ₽ / мес</span><a class="w-btn" href="#zayavka">Обсудить запуск</a></article>
+        <article class="w-card"><h3>Таргет + ведение группы</h3><p class="w-muted">Хотите отдать и рекламу, и контент</p><ul><li>Всё из «Таргет под ключ»</li><li>20–30 постов в месяц</li><li>Контент-план под страхи и возражения ваших клиентов</li></ul><span class="w-price">от 50 000 ₽ / мес <span class="w-ask">[запросить: 50 000 (перерисовка) или 60 000 (сайт)]</span></span><a class="w-btn ghost" href="#zayavka">Обсудить ведение</a></article>
+      </div>
+      <p class="w-note">Кнопки «Оплатить полностью» для холодного трафика из рекламы убраны: человек из Директа не платит 30 000 ₽ с первого визита, ему нужен разговор. Оплату оставить на странице после разговора или в ссылке, которую присылает менеджер. Карточку «Таргет под ключ» выделить – она основная.</p>
+    </div>
+  </section>
+
+  <section class="w-block" id="raschet" data-n="10" data-name="Квиз-расчёт" data-question="Какой вариант подойдёт именно мне?" data-proof="квиз старого сайта, 5 вопросов" data-next="А если остались сомнения?">
+    <div class="w-wrap w-stack">
+      <h2>Ответьте на 5 вопросов – пришлём расчёт бюджета и прогноз заявок</h2>
+      <form class="tf-quiz" onsubmit="event.preventDefault()">
+        <div class="bar"><i></i></div>
+        <b>Шаг 1 из 5. В какой нише ваш бизнес?</b>
+        <div class="opts">
+          <label><input type="radio" name="n"> Замерные ниши (потолки, окна)</label><label><input type="radio" name="n"> Цветы</label><label><input type="radio" name="n"> Одежда и обувь</label>
+          <label><input type="radio" name="n"> Авто из Кореи и Китая</label><label><input type="radio" name="n"> Детейлинг, СТО</label><label><input type="radio" name="n"> Детские центры</label>
+          <label><input type="radio" name="n"> Карго из Китая</label><label><input type="radio" name="n"> Кафе, доставка еды</label><label><input type="radio" name="n"> Бьюти</label>
+          <label><input type="radio" name="n"> Товарный бизнес</label><label><input type="radio" name="n"> Онлайн-школы</label><label><input type="radio" name="n"> Другое</label>
+        </div>
+        <p class="w-hint">Дальше: бюджет в месяц → что важнее (заявки, продажи, аудитория) → был ли опыт рекламы в ВК → имя, телефон, где ответить (ВК, Telegram, MAX, звонок)</p>
+        <label class="w-field">Имя<input autocomplete="name"></label>
+        <label class="w-field">Телефон<input inputmode="tel" placeholder="+7 (___) ___-__-__"></label>
+        <label class="w-check"><input type="checkbox" data-agree> <span>Согласен на обработку <a href="#">персональных данных</a></span></label>
+        <button class="w-btn" type="submit" disabled>Получить расчёт</button>
+        <div class="w-success">
+          <p><b>Расчёт готовим.</b></p>
+          <p>Денис или менеджер напишет в выбранный мессенджер <span class="w-ask">[запросить: за сколько – в рабочее время и в выходные]</span></p>
+          <p>Срочно – <a href="tel:+79132090181">позвонить</a> или <a href="https://vk.me/target_factory_vk">написать в ВК</a></p>
+          <p>Пока ждёте – <a href="#keysy">кейсы в вашей нише</a></p>
+        </div>
+      </form>
+      <p class="w-note">Квиз со старого сайта сохраняем по вопросам, но меняем финал: заголовок обещает конкретный результат (расчёт и прогноз), а не «менеджер свяжется». В прототипе показан шаг 1 и контакты – на сайте шаги идут по одному. Ниша из шага 1 уходит в заявку вместе с меткой источника.</p>
+    </div>
+  </section>
+
+  <section class="w-block" id="voprosy" data-n="11" data-name="Вопросы" data-question="А если остались сомнения?" data-proof="FAQ старого сайта, сокращённый" data-next="Чем ещё вы можете помочь?">
+    <div class="w-wrap w-stack w-faq">
+      <h2>Что спрашивают перед стартом</h2>
+      <details><summary>Что если реклама не принесёт результат?</summary><p>До запуска разбираем нишу, аудиторию и конкурентов, потом тестируем несколько связок. Вы видите кабинет, расходы и креативы. Что не даёт отклика – меняем быстро. Если проект пока не готов к рекламе, скажем об этом до старта.</p></details>
+      <details><summary>Есть ли тестовый период?</summary><p>Нет. Но на бесплатном разборе покажем действующие кабинеты в вашей нише и реальные заявки – решение примете по ним.</p></details>
+      <details><summary>Работаете с маленькими бизнесами и небольшими городами?</summary><p>Да. Есть клиенты из городов до 100 тысяч жителей и мастера, которым не нужен большой поток. Бюджет подбираем под вашу загрузку.</p></details>
+      <details><summary>Можно ли отказаться в любой момент?</summary><p>Да, предупредите за 7 дней – завершим работу и передадим рекомендации. Кабинет и группа остаются у вас.</p></details>
+      <details><summary>В каких городах работаете?</summary><p>По всей России и СНГ, онлайн: созвоны по видео в любой день.</p></details>
+      <details><summary>Как платить?</summary><p>По договору: на расчётный счёт или СБП, с ИП и ООО – через ЭДО, работаем и с физлицами.</p></details>
+      <p class="w-note">Вопросы «Сколько стоит», «Когда заявки», «Какой минимальный бюджет» убраны из FAQ – на них теперь отвечают блоки 8 и 9, повторять не нужно. Ответы сокращены в 2–3 раза.</p>
+    </div>
+  </section>
+
+  <section class="w-block tf-fork" id="eshche" data-n="12" data-name="Развилка на другие сайты" data-question="Чем ещё вы можете помочь?" data-proof="отдельные сайты: /flowers (TF), Deford (сайты), услуги Яндекса" data-next="Как сделать первый шаг?">
+    <div class="w-wrap w-stack">
+      <h2>Не только ВКонтакте</h2>
+      <div class="w-grid" style="--cols:3;--cols-m:1">
+        <a class="w-card" href="https://targetfactory.ru/flowers" style="text-decoration:none"><div class="w-media small" data-alt="Маркетинг для цветочных магазинов">Фото: цветочный магазин, холодильник с цветами</div><h3>Маркетинг для цветочных магазинов →</h3><p>Отдельное направление: праздники, списания, загрузка флористов. 10+ цветочных магазинов в работе <span class="w-ask">[запросить: точное число]</span></p></a>
+        <a class="w-card" href="https://deford-studio.ru" style="text-decoration:none"><div class="w-media small" data-alt="Разработка сайтов и интернет-магазинов">Фото: сайт клиента на телефоне и ноутбуке</div><h3>Сайт или интернет-магазин →</h3><p>Делаем с партнёрами из Deford: сайт, который продаёт с первого дня, и реклама на него</p></a>
+        <a class="w-card" href="#zayavka" style="text-decoration:none"><div class="w-media small" data-alt="Яндекс Директ и Яндекс Бизнес">Фото: карточка компании на Картах и объявление в поиске</div><h3>Яндекс Директ и Яндекс Бизнес →</h3><p>Реклама в поиске и на Картах, упаковка карточки <span class="w-ask">[запросить: делаете сами, есть ли страница]</span></p></a>
+      </div>
+      <p class="w-note">Развилка стоит внизу, чтобы человек из рекламы не ушёл со страницы до заявки. Ссылки открываются в той же вкладке и несут метку «с главной TF» (utm_source=targetfactory&amp;utm_content=razvilka). Те же три ссылки – в подвале.</p>
+    </div>
+  </section>
+
+  <section class="w-block" id="zayavka" data-n="13" data-name="Заявка" data-question="Как сделать первый шаг?" data-proof="что человек получит на разборе">
+    <div class="w-wrap">
+      <div class="w-grid" style="--cols:2;--cols-m:1;align-items:start">
+        <div class="w-stack">
+          <h2>Давайте поговорим, а там решите</h2>
+          <p>На бесплатном разборе за 30 минут:</p>
+          <ul><li>посмотрим вашу группу и рекламу, если она уже идёт;</li><li>покажем рабочие кабинеты в вашей нише;</li><li>посчитаем стартовый бюджет и прогноз заявок.</li></ul>
+          <p class="w-muted">Даже если не станете клиентом – уйдёте с планом, что делать.</p>
+          <div class="tf-msgr"><a class="w-btn ghost" href="https://vk.me/target_factory_vk">Написать в ВК</a><a class="w-btn ghost" href="https://t.me/korotaev_denis">Telegram</a><a class="w-btn ghost" href="#">MAX</a></div>
+        </div>
+        <form class="w-form" onsubmit="event.preventDefault()">
+          <h3>Записаться на бесплатный разбор</h3>
+          <label class="w-field">Имя<input autocomplete="name"></label>
+          <label class="w-field">Телефон<input inputmode="tel" placeholder="+7 (___) ___-__-__"></label>
+          <label class="w-field">Ниша и город<input placeholder="Например: кухни, Саратов"></label>
+          <label class="w-check"><input type="checkbox" data-agree> <span>Согласен на обработку <a href="#">персональных данных</a></span></label>
+          <button class="w-btn" type="submit" disabled>Записаться на разбор</button>
+          <p class="w-hint">Напишем в ВК или Telegram и предложим время созвона</p>
+          <div class="w-success">
+            <p><b>Заявка у нас.</b></p>
+            <p>Напишем и предложим время созвона <span class="w-ask">[запросить: срок ответа]</span></p>
+            <p>Срочно – <a href="tel:+79132090181">+7 (913) 209-01-81</a> или <a href="https://vk.me/target_factory_vk">ВК</a></p>
+            <p>К разговору: ссылка на группу и сколько сейчас тратите на рекламу. Пока ждёте – <a href="otzyvy/">отзывы клиентов</a></p>
+          </div>
+        </form>
+      </div>
+      <p class="w-note">Одна финальная форма вместо трёх одинаковых «Оставьте заявку» в коде старого сайта. Поле «Ниша и город» – Денис в ВК сам просит «пишите нишу и город», так разговор начинается сразу по делу.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="w-footer"><div class="w-wrap w-stack">
+  <div class="tf-foot">
+    <div><b>Target Factory</b><span class="w-muted" style="display:block">Агентство рекламы ВКонтакте</span><a href="tel:+79132090181">+7 (913) 209-01-81</a><a href="mailto:korotaev.TF@yandex.ru">korotaev.TF@yandex.ru</a></div>
+    <div><b>Реклама</b><a href="#keysy">Кейсы</a><a href="otzyvy/">Отзывы</a><a href="#ceny">Цены</a><a href="#raschet">Расчёт бюджета</a></div>
+    <div><b>Другие направления</b><a href="https://targetfactory.ru/flowers">Маркетинг для цветочных магазинов</a><a href="https://deford-studio.ru">Разработка сайтов и магазинов</a><a href="#eshche">Яндекс Директ и Бизнес</a></div>
+    <div><b>Документы</b><a href="#">Политика конфиденциальности</a><a href="#">Пользовательское соглашение</a><a href="#">Реквизиты</a><span class="w-muted">Сайт – Deford</span></div>
+  </div>
+</div></footer>
+
+<div class="w-sticky"><a class="w-btn" href="#zayavka">Бесплатный разбор</a><a class="w-btn ghost" href="https://vk.me/target_factory_vk">Написать в ВК</a></div>
+
+<script>
+document.querySelectorAll('.w-block').forEach(function (b) {
+  var d = b.dataset, el = document.createElement('div');
+  el.className = 'w-logic';
+  el.innerHTML = '<b>Блок ' + (d.n || '?') + ' · ' + (d.name || '') + '</b><br>Вопрос клиента: ' + (d.question || '–') + '<br>Опора: ' + (d.proof || '–') + (d.next ? '<br>Дальше спросит: ' + d.next : '');
+  if (b.tagName === 'HEADER') b.prepend(el); else (b.querySelector('.w-wrap') || b).prepend(el);
+});
+['logic', 'notes', 'seo', 'success'].forEach(function (k) {
+  document.getElementById('t-' + k).addEventListener('change', function (e) { document.body.classList.toggle('show-' + k, e.target.checked); });
+});
+(function () {
+  var src = document.getElementById('w-seo'), box = document.getElementById('w-seo-box');
+  if (!src || !box) return;
+  var d = JSON.parse(src.textContent), esc = function (t) { return String(t).replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); };
+  var len = function (t, max) { return ' <span class="' + (t.length > max ? 'bad' : '') + '">(' + t.length + ' / ' + max + ')</span>'; };
+  var heads = [].map.call(document.querySelectorAll('main h1, main h2'), function (h) { return '<li>' + h.tagName + ' – ' + esc(h.textContent.trim()) + '</li>'; }).join('');
+  var alts = [].map.call(document.querySelectorAll('[data-alt]'), function (m) { return '<li>' + esc(m.dataset.alt) + '</li>'; }).join('');
+  box.innerHTML = '<table><tr><td>title</td><td>' + esc(d.title) + len(d.title, 65) + '</td></tr><tr><td>description</td><td>' + esc(d.description) + len(d.description, 160) +
+    '</td></tr><tr><td>запрос</td><td>' + esc(d.zapros || '–') + '</td></tr><tr><td>заголовки</td><td><ul>' + heads + '</ul></td></tr><tr><td>alt</td><td><ul>' + (alts || '<li>–</li>') +
+    '</ul></td></tr><tr><td>разметка</td><td>' + esc(d.schema || '–') + '</td></tr><tr><td>ссылки</td><td><ul>' + (d.links || []).map(function (l) { return '<li>' + esc(l) + '</li>'; }).join('') + '</ul></td></tr></table>';
+})();
+document.getElementById('ask-count').textContent = document.querySelectorAll('.w-ask').length;
+document.querySelectorAll('form').forEach(function (f) {
+  var a = f.querySelector('[data-agree]'), btn = f.querySelector('button[type="submit"], button:not([type])');
+  if (a && btn) a.addEventListener('change', function () { btn.disabled = !a.checked; });
+});
+document.querySelectorAll('.tf-chips button').forEach(function (b) {
+  b.addEventListener('click', function () { document.querySelectorAll('.tf-chips button').forEach(function (x) { x.classList.toggle('on', x === b); }); });
+});
+</script>
+<div data-vidzhety data-src="vidzhety-glavnaya.json"></div>
+<script src="https://tema-mail.github.io/vidzhety/vidzhety.js"></script>
+</body>
+</html>
