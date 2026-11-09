@@ -155,6 +155,7 @@ header.w-block > .w-logic { margin: 8px auto; max-width: var(--wrap); }
 .tf-ba .row { display: grid; grid-template-columns: 70px 1fr; gap: 8px; font-size: 15px; }
 .tf-ba .row b { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; padding-top: 2px; }
 .tf-ba blockquote { margin: 0; border-left: 3px solid var(--ink); padding-left: 10px; font-style: italic; }
+.tf-stories { display: grid; gap: 16px; }
 .tf-story { display: grid; grid-template-columns: .8fr 1.2fr; gap: 24px; border: 1px solid var(--line); padding: 18px; }
 .tf-nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 .tf-nums div { border: 1px solid var(--line); padding: 10px; font-size: 13px; display: grid; }
@@ -168,7 +169,9 @@ header.w-block > .w-logic { margin: 8px auto; max-width: var(--wrap); }
 .tf-rating { display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: baseline; }
 .tf-rating b { font-size: 40px; line-height: 1; }
 @media (max-width: 760px) {
-  .tf-story { grid-template-columns: 1fr; }
+  .tf-story { grid-template-columns: 1fr; align-content: start; }
+  .tf-scroll-m { grid-auto-flow: column; grid-auto-columns: 86%; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .tf-scroll-m > * { scroll-snap-align: start; }
   .tf-videos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tf-nums b { font-size: 17px; }
 }
@@ -215,42 +218,67 @@ body.vz-has-sticky .w-sticky { display: none !important; }
     </div>
   </section>
 
-  <section class="w-block" data-n="2" data-name="Истории до / после" data-question="Что конкретно изменилось у клиентов?" data-proof="расшифровки 3 видео-отзывов (28.10.2026) + цифры от Дениса" data-next="А это живые люди, а не постановка?">
+  <section class="w-block" data-n="2" data-name="Истории до / после" data-question="Что конкретно изменилось у клиентов?" data-proof="2 видео-отзыва (расшифровки 28.10.2026) + 3 кейса из поста группы ВК «Наши результаты» (24.03.2025)" data-next="А это живые люди, а не постановка?">
     <div class="w-wrap w-stack">
-      <h2>Три истории подробно</h2>
-      <article class="tf-story">
+      <h2>Пять ниш – пять историй</h2>
+      <div class="tf-stories tf-scroll-m">
+      <article class="tf-story" data-niche="Цветы">
         <div class="w-media" data-alt="Видео-отзыв Антона Зайцева, цветочный магазин, Нижний Новгород">Видео-отзыв 1:05 · Антон в магазине</div>
         <div class="tf-ba">
-          <b>Антон Зайцев · цветочный магазин · Нижний Новгород · с нами 7–8 месяцев</b>
+          <b>Цветы · Антон Зайцев · Нижний Новгород · с нами 7–8 месяцев</b>
           <div class="row"><b>До</b><span>Реклама на 2–4 креативах, которые крутились месяцами. Результат нестабильный: то хорошо, то не очень.</span></div>
-          <div class="row"><b>Что сделали</b><span>Аудит кабинета, рекомендации по группе. Креативы и тексты делаем сами из постов, которые зашли, с помощью ИИ.</span></div>
-          <div class="row"><b>После</b><span>Продолжаем работать. Владелец не тратит время на креативы: дал УТП и иногда присылает видео.</span></div>
-          <div class="tf-nums"><div><b><span class="w-ask">[N]</span></b>заявок в месяц</div><div><b><span class="w-ask">[N ₽]</span></b>цена заявки до</div><div><b><span class="w-ask">[N ₽]</span></b>цена заявки после</div></div>
+          <div class="row"><b>Что сделали</b><span>Аудит кабинета, рекомендации по группе. Креативы и тексты делаем сами из постов, которые зашли.</span></div>
+          <div class="row"><b>После</b><span>Работаем дальше. Владелец не тратит время на креативы: дал УТП и иногда присылает видео.</span></div>
+          <div class="tf-nums"><div><b><span class="w-ask">[N]</span></b>заявок в месяц</div><div><b><span class="w-ask">[N ₽]</span></b>заявка до</div><div><b><span class="w-ask">[N ₽]</span></b>заявка после</div></div>
           <blockquote>«Не бойтесь, обращайтесь. Всё будет здорово у вас»</blockquote>
         </div>
       </article>
-      <article class="tf-story">
-        <div class="w-media" data-alt="Видео-отзыв Алексея, цветочный магазин, Тюмень">Видео-отзыв 0:53 · Алексей</div>
+      <article class="tf-story" data-niche="Мебель">
+        <div class="w-media" data-alt="Кабинет ВК Рекламы: заявки на кухни на заказ, Саратов">Скрин кабинета: заявки и цена заявки за 3 недели</div>
         <div class="tf-ba">
-          <b>Алексей · цветочный магазин · Тюмень · с октября 2025</b>
-          <div class="row"><b>До</b><span><span class="w-ask">[запросить у Дениса: что было с ВК до старта]</span></span></div>
-          <div class="row"><b>Что сделали</b><span>Ведём рекламу ВКонтакте, отчёт каждую неделю и за месяц.</span></div>
-          <div class="row"><b>После</b><span>Подписчики растут из месяца в месяц, из ВК идут продажи.</span></div>
-          <div class="tf-nums"><div><b><span class="w-ask">[N]</span></b>подписчиков</div><div><b><span class="w-ask">[N]</span></b>заявок</div><div><b><span class="w-ask">[N ₽]</span></b>выручка из ВК</div></div>
-          <blockquote>«Постоянно человек на связи, какие-то вопросы решаем сразу»</blockquote>
+          <b>Мебель · кухни на заказ · Саратов · 3 недели</b>
+          <div class="row"><b>До</b><span><span class="w-ask">[запросить: была ли реклама в ВК, почём заявка]</span></span></div>
+          <div class="row"><b>Что сделали</b><span><span class="w-ask">[запросить: аудитории и креативы – что сработало]</span></span></div>
+          <div class="row"><b>После</b><span>Лучшая неделя – 20 заявок по 216 ₽. Продали 2 кухни и шкаф больше чем на 675 000 ₽.</span></div>
+          <div class="tf-nums"><div><b>72</b>заявки за 3 недели</div><div><b>380 ₽</b>средняя заявка</div><div><b>675 000 ₽+</b>продажи</div></div>
+          <blockquote><span class="w-ask">[запросить: цитату владельца или скрин его сообщения]</span></blockquote>
         </div>
       </article>
-      <article class="tf-story">
+      <article class="tf-story" data-niche="Бьюти">
+        <div class="w-media" data-alt="Кабинет ВК Рекламы: заявки на LPG-массаж, Томск">Скрин кабинета: заявки на LPG за неделю</div>
+        <div class="tf-ba">
+          <b>Бьюти · LPG-массаж · Томск · неделя</b>
+          <div class="row"><b>До</b><span><span class="w-ask">[запросить: откуда шли клиенты до ВК]</span></span></div>
+          <div class="row"><b>Что сделали</b><span><span class="w-ask">[запросить: оффер – пробная процедура или абонемент]</span></span></div>
+          <div class="row"><b>После</b><span>За неделю 40 заявок, из них 9 купили абонементы.</span></div>
+          <div class="tf-nums"><div><b>40</b>заявок за неделю</div><div><b>243 ₽</b>заявка</div><div><b>117 000 ₽</b>9 абонементов</div></div>
+          <blockquote><span class="w-ask">[запросить: цитату владельца]</span></blockquote>
+        </div>
+      </article>
+      <article class="tf-story" data-niche="Одежда">
+        <div class="w-media" data-alt="Переписка шоурума женской одежды с покупателями из ВК, Казань">Скрин переписки с покупателем</div>
+        <div class="tf-ba">
+          <b>Одежда · шоурум женской одежды · Казань</b>
+          <div class="row"><b>До</b><span><span class="w-ask">[запросить: сколько продаж было из ВК до старта]</span></span></div>
+          <div class="row"><b>Что сделали</b><span>Набираем подписчиков в группу и ведём в сообщения, где продаёт менеджер шоурума. <span class="w-ask">[запросить: подтвердить схему]</span></span></div>
+          <div class="row"><b>После</b><span>Каждый день 2–3 новых покупателя, 135 продаж за неделю. Похожий итог у шоурума мужской одежды в Перми: 300 продаж за 2 недели.</span></div>
+          <div class="tf-nums"><div><b>319</b>сообщений по 135 ₽</div><div><b>830</b>подписчиков по 32 ₽</div><div><b>135</b>продаж за неделю</div></div>
+          <blockquote><span class="w-ask">[запросить: цитату владелицы]</span></blockquote>
+        </div>
+      </article>
+      <article class="tf-story" data-niche="Другое">
         <div class="w-media" data-alt="Видео-отзыв Руслана, сеть салонов Boombox, Пенза">Видео-отзыв · Руслан</div>
         <div class="tf-ba">
-          <b>Руслан · сеть салонов Boombox · Пенза</b>
+          <b>Сеть салонов Boombox · Руслан · Пенза <span class="w-ask">[запросить: ниша салонов]</span></b>
           <div class="row"><b>До</b><span>Был другой таргетолог, работой был недоволен. Нашёл Дениса по его видео.</span></div>
-          <div class="row"><b>Что сделали</b><span>Взяли на ведение одну группу из сети <span class="w-ask">[запросить: что именно сделали]</span></span></div>
+          <div class="row"><b>Что сделали</b><span>Взяли на ведение одну группу из сети. <span class="w-ask">[запросить: что именно сделали]</span></span></div>
           <div class="row"><b>После</b><span><span class="w-ask">[запросить: результат в цифрах, отдали ли другие группы]</span></span></div>
+          <div class="tf-nums"><div><b><span class="w-ask">[N]</span></b>заявок</div><div><b><span class="w-ask">[N ₽]</span></b>заявка</div><div><b><span class="w-ask">[N]</span></b>групп сети у нас</div></div>
           <blockquote>«Денис проявился с положительной стороны как профессионал своего дела»</blockquote>
         </div>
       </article>
-      <p class="w-note">История = видео слева + текст справа: до → что сделали → после → 3 цифры → цитата. Цифры без подтверждения не ставить: если Денис не даст – ряд цифр в карточке не показывать. Цитаты дословно из видео.</p>
+      </div>
+      <p class="w-note">Пять ниш, по одной истории: цветы, мебель, бьюти, одежда, сеть салонов. Фильтр по нише из первого экрана ставит историю этой ниши первой. На телефоне истории листаются вбок. История = видео или скрин слева + текст справа: до → что сделали → после → 3 цифры → цитата. Цифры без подтверждения не ставить: если Денис не даст – ряд цифр в карточке не показывать. Цитаты дословно из видео.</p>
     </div>
   </section>
 
